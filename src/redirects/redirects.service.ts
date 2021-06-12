@@ -55,6 +55,7 @@ export class RedirectsService {
     }
   }
 
+  // Returns every redirect record in DB
   async redirects(): Promise<Redirects[]> {
     try {
       return await this.db.redirects.findMany();
