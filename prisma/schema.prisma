@@ -21,7 +21,7 @@ model users {
 
 model redirects {
   id Int     @default(autoincrement()) @id
-  app_name String
+  app_name String @unique
   ios Int?
   android Int?
   web Int?
