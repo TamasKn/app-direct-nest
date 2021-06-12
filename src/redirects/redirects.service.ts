@@ -1,6 +1,16 @@
-import {Injectable} from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import {PrismaService} from '../../prisma/prisma.service';
-import {redirects as Redirects, Prisma} from '@prisma/client';
+import {AppNotFound} from '../views/AppNotFound';
+import {RedirectsType} from '../../graphql/redirects.type';
+import {redirects as Redirects} from '@prisma/client';
+
+/**
+ * URL: http://localhost:4000/direct/jifflr
+ **/
 
 @Injectable()
 export class RedirectsService {
@@ -16,25 +26,42 @@ export class RedirectsService {
   constructor(private db: PrismaService) {}
 
   // Retrieve the appropriate URL if the app is exist in our record
-  async redirect(app, headers): Promise<void> {
+  async direct(app, headers, res): Promise<void> {
     const name = app.toLowerCase();
     const device = this.deviceParser(headers['user-agent']);
 
     if (this.apps[name]) {
-      await this.db.redirects.update({
-        where: {
-          id: 6,
-        },
-        data: {
-          [device]: {increment: 1},
-        },
-      });
+      try {
+        await this.db.redirects.update({
+          where: {
+            app_name: app,
+          },
+          data: {
+            [device]: {increment: 1},
+          },
+        });
 
-      // Redirect to the appropriate page
-
-      // Make this function with REST API because of redirect and url parsing
+        // Redirect to the appropriate page
+        return res.redirect(this.apps[name][device]);
+      } catch (err) {
+        // If Database not available
+        throw new InternalServerErrorException({
+          message: 'Database not available',
+        });
+      }
     } else {
-      console.log('No app');
+      // If App not exist in our record, sends Not Found page
+      return res.status(400).send(AppNotFound);
+    }
+  }
+
+  async redirects(): Promise<Redirects[]> {
+    try {
+      return await this.db.redirects.findMany();
+    } catch (err) {
+      throw new InternalServerErrorException({
+        message: 'Database not available',
+      });
     }
   }
 
