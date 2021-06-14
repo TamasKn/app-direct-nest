@@ -1,0 +1,4 @@
+# Root directory git ignore
+
+#IDE
+.idea/
