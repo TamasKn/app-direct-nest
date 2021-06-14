@@ -1,0 +1,111 @@
+nav {
+    height: 5rem;
+    width: 100vw;
+    background-color: #282872;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    color: white;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #d6e0e0;
+}
+
+.logout {
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.button {
+    cursor: pointer;
+
+}
+
+.error {
+    color: red;
+    font-size: 1.2rem;
+}
+
+.login__container {
+    padding: 10rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login__item {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.login__item label {
+    font-size: 1.7rem;
+    color: #616161;
+    margin-bottom: .5rem;
+}
+
+.login__item input {
+    width: 100%;
+    height: 4.5rem;
+    border: 1px solid #dadada;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 1.8rem;
+    padding-left: 1.6rem;
+    outline: none;
+}
+
+.login__item input:focus {
+    border: 1px solid #282872;
+    transition: border 0.2s linear;
+}
+
+.button {
+    padding: 1rem 2rem;
+    margin: 1rem 0;
+    width: fit-content;
+    background-color: #282872;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.redirects__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10rem 1rem;
+}
+
+h2 {
+    color: #2f2f2f;
+}
+
+table {
+    width: 50%;
+    margin-top: 3rem;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+
+th {
+    font-weight: 400;
+    color: #282872;
+}
+
+td {
+    font-weight: 600;
+    color: #2f2f2f;
+    font-size: 1.8rem;
+}
+

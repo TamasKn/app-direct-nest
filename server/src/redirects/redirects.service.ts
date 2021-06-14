@@ -1,11 +1,6 @@
-import {
-  Injectable,
-  InternalServerErrorException,
-  NotFoundException,
-} from '@nestjs/common';
+import {Injectable, InternalServerErrorException} from '@nestjs/common';
 import {PrismaService} from '../../prisma/prisma.service';
 import {AppNotFound} from '../views/AppNotFound';
-import {RedirectsType} from '../../graphql/redirects.type';
 import {redirects as Redirects} from '@prisma/client';
 
 /**
