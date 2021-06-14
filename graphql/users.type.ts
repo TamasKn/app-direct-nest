@@ -13,3 +13,9 @@ export class UsersType {
   @Field()
   password: string;
 }
+
+@ObjectType('response')
+export class ResponseType {
+  @Field()
+  success: boolean;
+}
