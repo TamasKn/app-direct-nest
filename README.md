@@ -1,5 +1,7 @@
 # AppDirect Nest
 
+Call `http://localhost:4000/direct/jifflr` to redirect the appropriate site or store.
+
 ### Backend
 
 Application built on Nest.js with Typescript, Prisma(PostgreSQL) and GraphQL.
