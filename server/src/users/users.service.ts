@@ -10,7 +10,7 @@ export interface LoginResponse {
 export class UsersService {
   constructor(private db: PrismaService) {}
 
-  // Get all users from Database
+  // Get user from Database
   async user(name, password): Promise<LoginResponse> {
     try {
       const user = await this.db.users.findUnique({

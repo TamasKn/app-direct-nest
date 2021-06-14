@@ -20,7 +20,7 @@ export class RedirectsService {
 
   constructor(private db: PrismaService) {}
 
-  // Retrieve the appropriate URL if the app is exist in our record
+  // Retrieve the appropriate URL if the app exist in our record
   async direct(app, headers, res): Promise<void> {
     const name = app.toLowerCase();
     const device = this.deviceParser(headers['user-agent']);
